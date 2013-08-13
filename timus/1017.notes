@@ -1,0 +1,4 @@
+1017-2: пусть a_i_j - кол-во сумм a_1 + ... + a_l = i и \forall i a_i <= j 
+    a_i_j = a_i_j-1 + a_i-j_j-1 - либо a_l = j либо нет
+
+they say O(n*sqrt(n)) exists

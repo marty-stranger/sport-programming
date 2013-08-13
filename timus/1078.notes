@@ -1,0 +1,2 @@
+- O(n*log(n)) exists
+- another approach sort by segment length and modify rec a little bit

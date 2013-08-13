@@ -1,0 +1,1 @@
+inversions count - O(n*log(n)) merge sort like, via fenvick or rmq

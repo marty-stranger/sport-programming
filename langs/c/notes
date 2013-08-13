@@ -1,0 +1,3 @@
+-
+  gcc 4 in cf cannot optimize (int[]){1, 0, -1, 0}[di] in inner loop
+	but can optimize (const int[]){...}

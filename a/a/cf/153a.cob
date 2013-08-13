@@ -1,0 +1,22 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. SOLUTION.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 A        PIC 9(10).
+       01 B        PIC 9(10).
+       01 WS-COUNTER    PIC 9(9)  VALUE ZEROES.
+       01 STR      PIC X(10).
+
+       PROCEDURE DIVISION.
+         ACCEPT STR
+         MOVE STR TO A
+         ACCEPT STR
+         MOVE STR TO B
+         ADD A TO B
+         INSPECT B TALLYING WS-COUNTER FOR LEADING ZEROES
+         MOVE B(WS-COUNTER + 1:) TO STR
+         DISPLAY STR
+         STOP RUN.
+
+

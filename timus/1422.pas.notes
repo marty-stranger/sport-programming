@@ -1,0 +1,5 @@
+- сортировка с перестановкой 3-ек double или integer - tle
+- сортировка с quicksort с (l + r) div 2 - tle
+- нормировка делением на максимум - быстрее чем gcd
+- использование double быстро?
+- good hash function exist? So O(n^2)?

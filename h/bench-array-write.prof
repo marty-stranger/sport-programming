@@ -1,0 +1,27 @@
+	Sun Apr 13 21:14 2014 Time and Allocation Profiling Report  (Final)
+
+	   bench-array-write +RTS -hcf -p -P -RTS
+
+	total time  =        1.40 secs   (1402 ticks @ 1000 us, 1 processor)
+	total alloc = 2,120,049,928 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE  %time %alloc  ticks     bytes
+
+f           Main     68.3   83.4    958 1768000408
+f.\         Main     31.7   16.6    444 352000016
+
+
+                                                      individual     inherited
+COST CENTRE MODULE                  no.     entries  %time %alloc   %time %alloc  ticks     bytes
+
+MAIN        MAIN                     44           0    0.0    0.0   100.0  100.0      0       696
+ main       Main                     89           0    0.0    0.0     0.0    0.0      0     10120
+ CAF        Main                     87           0    0.0    0.0   100.0  100.0      0       112
+  f         Main                     90           1   68.3   83.4   100.0  100.0    958 1768000408
+   f.\      Main                     92    22000001   31.7   16.6    31.7   16.6    444 352000016
+   f.l      Main                     91           1    0.0    0.0     0.0    0.0      0        96
+  main      Main                     88           1    0.0    0.0     0.0    0.0      0        40
+ CAF        GHC.Conc.Signal          85           0    0.0    0.0     0.0    0.0      0       672
+ CAF        GHC.IO.Encoding          78           0    0.0    0.0     0.0    0.0      0      2800
+ CAF        GHC.IO.Encoding.Iconv    76           0    0.0    0.0     0.0    0.0      0       248
+ CAF        GHC.IO.Handle.FD         69           0    0.0    0.0     0.0    0.0      0     34720

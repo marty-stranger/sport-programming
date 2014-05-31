@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+$: << '/vagrant/sp/testing/ext'
+
+require 'run'
+
+include Run
+
+time_limit = 1 << 30
+memory_limit = 1 << 30
+
+prog = ARGV.shift
+
+r = run prog, time_limit, memory_limit
+puts
+puts r.inspect

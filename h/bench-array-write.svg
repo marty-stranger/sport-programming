@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='1280.0' height='720.0'>
+<g fill='#ffffff'>
+<rect x='0.0' y='0.0' width='1280.0' height='720.0' />
+</g>
+<g fill='#000000' stroke='#000000' stroke-width='1.0'>
+<text x='640.0' y='45.0' font-size='25.0' text-anchor='middle'>bench-array-write +RTS -hcf -hy -sstderr (Sun Apr 13 21:24 2014)</text>
+<text transform='translate(30.0,360.0) rotate(-90.0)' font-size='20.0' text-anchor='middle'>bytes</text>
+<text x='510.0' y='690.0' font-size='20.0' text-anchor='middle'>seconds</text>
+<line x1='60.0' x2='930.0' y1='630.0' y2='630.0' />
+<text x='80.0' y='620.0' font-size='15.0' text-anchor='end'>0</text>
+<line x1='60.0' x2='930.0' y1='596.2508' y2='596.2508' />
+<text x='80.0' y='586.2508' font-size='15.0' text-anchor='end'>500k</text>
+<line x1='60.0' x2='930.0' y1='562.5016' y2='562.5016' />
+<text x='80.0' y='552.5016' font-size='15.0' text-anchor='end'>1M</text>
+<line x1='60.0' x2='930.0' y1='528.7524' y2='528.7524' />
+<text x='80.0' y='518.7524' font-size='15.0' text-anchor='end'>1.5M</text>
+<line x1='60.0' x2='930.0' y1='495.0032' y2='495.0032' />
+<text x='80.0' y='485.0032' font-size='15.0' text-anchor='end'>2M</text>
+<line x1='60.0' x2='930.0' y1='461.254' y2='461.254' />
+<text x='80.0' y='451.254' font-size='15.0' text-anchor='end'>2.5M</text>
+<line x1='60.0' x2='930.0' y1='427.5049' y2='427.5049' />
+<text x='80.0' y='417.5049' font-size='15.0' text-anchor='end'>3M</text>
+<line x1='60.0' x2='930.0' y1='393.7557' y2='393.7557' />
+<text x='80.0' y='383.7557' font-size='15.0' text-anchor='end'>3.5M</text>
+<line x1='60.0' x2='930.0' y1='360.0065' y2='360.0065' />
+<text x='80.0' y='350.0065' font-size='15.0' text-anchor='end'>4M</text>
+<line x1='60.0' x2='930.0' y1='326.2573' y2='326.2573' />
+<text x='80.0' y='316.2573' font-size='15.0' text-anchor='end'>4.5M</text>
+<line x1='60.0' x2='930.0' y1='292.5081' y2='292.5081' />
+<text x='80.0' y='282.5081' font-size='15.0' text-anchor='end'>5M</text>
+<line x1='60.0' x2='930.0' y1='258.7589' y2='258.7589' />
+<text x='80.0' y='248.7589' font-size='15.0' text-anchor='end'>5.5M</text>
+<line x1='60.0' x2='930.0' y1='225.0097' y2='225.0097' />
+<text x='80.0' y='215.0097' font-size='15.0' text-anchor='end'>6M</text>
+<line x1='60.0' x2='930.0' y1='191.2605' y2='191.2605' />
+<text x='80.0' y='181.2605' font-size='15.0' text-anchor='end'>6.5M</text>
+<line x1='60.0' x2='930.0' y1='157.5113' y2='157.5113' />
+<text x='80.0' y='147.5113' font-size='15.0' text-anchor='end'>7M</text>
+<line x1='60.0' x2='930.0' y1='123.7621' y2='123.7621' />
+<text x='80.0' y='113.7621' font-size='15.0' text-anchor='end'>7.5M</text>
+<line x1='60.0' x2='930.0' y1='90.01296' y2='90.01296' />
+<line x1='90.0' x2='90.0' y1='660.0' y2='90.0' />
+<text x='100.0' y='650.0' font-size='15.0' text-anchor='start'>0</text>
+<line x1='150.8696' x2='150.8696' y1='660.0' y2='90.0' />
+<text x='160.8696' y='650.0' font-size='15.0' text-anchor='start'>0.1</text>
+<line x1='211.7391' x2='211.7391' y1='660.0' y2='90.0' />
+<text x='221.7391' y='650.0' font-size='15.0' text-anchor='start'>0.2</text>
+<line x1='272.6087' x2='272.6087' y1='660.0' y2='90.0' />
+<text x='282.6087' y='650.0' font-size='15.0' text-anchor='start'>0.3</text>
+<line x1='333.4783' x2='333.4783' y1='660.0' y2='90.0' />
+<text x='343.4783' y='650.0' font-size='15.0' text-anchor='start'>0.4</text>
+<line x1='394.3478' x2='394.3478' y1='660.0' y2='90.0' />
+<text x='404.3478' y='650.0' font-size='15.0' text-anchor='start'>0.5</text>
+<line x1='455.2174' x2='455.2174' y1='660.0' y2='90.0' />
+<text x='465.2174' y='650.0' font-size='15.0' text-anchor='start'>0.6</text>
+<line x1='516.087' x2='516.087' y1='660.0' y2='90.0' />
+<text x='526.087' y='650.0' font-size='15.0' text-anchor='start'>0.7</text>
+<line x1='576.9565' x2='576.9565' y1='660.0' y2='90.0' />
+<text x='586.9565' y='650.0' font-size='15.0' text-anchor='start'>0.8</text>
+<line x1='637.8261' x2='637.8261' y1='660.0' y2='90.0' />
+<text x='647.8261' y='650.0' font-size='15.0' text-anchor='start'>0.9</text>
+<line x1='698.6957' x2='698.6957' y1='660.0' y2='90.0' />
+<text x='708.6957' y='650.0' font-size='15.0' text-anchor='start'>1</text>
+<line x1='759.5652' x2='759.5652' y1='660.0' y2='90.0' />
+<text x='769.5652' y='650.0' font-size='15.0' text-anchor='start'>1.1</text>
+<line x1='820.4348' x2='820.4348' y1='660.0' y2='90.0' />
+<text x='830.4348' y='650.0' font-size='15.0' text-anchor='start'>1.2</text>
+<line x1='881.3043' x2='881.3043' y1='660.0' y2='90.0' />
+<g fill-opacity='0.7'>
+<g fill='#ffffff'>
+<rect x='90.0' y='90.0' width='840.0' height='540.0' />
+</g>
+<g fill='#5b0991'>
+<path d='M 90.0,630.0 L 150.8696,629.9908 L 211.7391,629.9908 L 272.6087,629.9908 L 333.4783,629.9908 L 394.3478,629.9881 L 449.1304,629.9908 L 516.087,629.9908 L 570.8696,629.9908 L 631.7391,629.9908 L 692.6087,629.9908 L 753.4783,629.9908 L 814.3478,629.9908 L 875.2174,629.9908 L 930.0,630.0 L 930.0,630.0 L 875.2174,90.0027 L 814.3478,90.0027 L 753.4783,90.0027 L 692.6087,90.0027 L 631.7391,90.0027 L 570.8696,90.0027 L 516.087,90.0027 L 449.1304,90.0027 L 394.3478,90.0 L 333.4783,90.0027 L 272.6087,90.0027 L 211.7391,90.0027 L 150.8696,90.0027 L 90.0,630.0 L 90.0,630.0 Z' /></g>
+<g fill='#bf3725'>
+<path d='M 90.0,630.0 L 150.8696,630.0 L 211.7391,630.0 L 272.6087,630.0 L 333.4783,630.0 L 394.3478,630.0 L 449.1304,630.0 L 516.087,630.0 L 570.8696,630.0 L 631.7391,630.0 L 692.6087,630.0 L 753.4783,630.0 L 814.3478,630.0 L 875.2174,630.0 L 930.0,630.0 L 930.0,630.0 L 875.2174,629.9908 L 814.3478,629.9908 L 753.4783,629.9908 L 692.6087,629.9908 L 631.7391,629.9908 L 570.8696,629.9908 L 516.087,629.9908 L 449.1304,629.9908 L 394.3478,629.9881 L 333.4783,629.9908 L 272.6087,629.9908 L 211.7391,629.9908 L 150.8696,629.9908 L 90.0,630.0 L 90.0,630.0 Z' /></g>
+<g fill='#5b0991'>
+<rect x='990.0' y='93.375' width='27.0' height='27.0' />
+</g>
+<text x='1023.75' y='110.25' font-size='15.0' text-anchor='start'>ARR_WORDS</text>
+<g fill='#bf3725'>
+<rect x='990.0' y='127.125' width='27.0' height='27.0' />
+</g>
+<text x='1023.75' y='144.0' font-size='15.0' text-anchor='start'>(trace elements)</text>
+</g>
+</g>
+</svg>

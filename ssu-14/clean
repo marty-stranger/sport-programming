@@ -1,0 +1,2 @@
+#!/bin/sh
+rm *.hi *.o *.class a.out *.in *.out in out

@@ -1,0 +1,21 @@
+c-mvector.hs:dijkstra graph = runST $ do
+c-mvector.hs:    let dijkstra' q
+c-mvector.hs:            dijkstra' q''
+c-mvector.hs:    dijkstra' queue
+c-mvector.hs:        d = last $ dijkstra g
+c-pq.hs:dijkstra graph = runST $ do
+c-pq.hs:    let dijkstra' q
+c-pq.hs:            dijkstra' q''
+c-pq.hs:    dijkstra' queue
+c-pq.hs:        d = last $ dijkstra g
+c-seq.hs:dijkstra graph =
+c-seq.hs:    dijkstra' browsed queue distances
+c-seq.hs:    dijkstra' bs q ds
+c-seq.hs:        | otherwise = dijkstra' bs' q'' ds'
+c-seq.hs:        d = last $ Foldable.toList $ dijkstra g
+c.hs:dijkstra graph = runST $ do
+c.hs:    let dijkstra' = do
+c.hs:          dijkstra'
+c.hs:    dijkstra'
+c.hs:        d = last $ dijkstra g
+c.hs:  print $ dijkstra g -}

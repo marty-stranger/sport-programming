@@ -1,0 +1,87 @@
+#!/usr/bin/env ruby
+
+$: << '/vagrant/sp/testing/ext'
+
+require 'fileutils'
+require 'yaml'
+
+require 'run'
+
+require 'term/ansicolor'
+
+include Run
+
+class String
+  include Term::ANSIColor
+end
+
+problem_name = ARGV.shift
+
+puts problem_name.inspect
+
+if not ARGV.empty?
+  program_name = ARGV.shift
+end
+
+test_nums = ARGV.dup
+
+program_name = 'a.out' if program_name.nil?
+
+contest_name = Dir.pwd.split('/').last
+
+contest_path = '.'
+
+contest = YAML.load_file "#{contest_path}/contest.yaml"
+if problem_name =~ /^[a-z]$/
+  problem_name = contest[problem_name.getbyte(0) - 'a'.getbyte(0)]
+  puts 'find-me', problem_name.inspect
+end
+
+problem_path = contest_path + '/' + problem_name
+problem = YAML.load_file "#{problem_path}/problem.yaml"
+
+if test_nums.empty?
+  problem[:tests_count].times do |index|
+    test_nums << index + 1
+  end
+end
+
+if problem[:fpct]
+end
+
+format = "%0#{problem[:tests_count].to_s.length}d"
+
+CodeList = [:ok, :re, :tle, :mle]
+
+test_nums.each do |test_num|
+  puts test_num
+  test_num_s = format % test_num
+  test_filename = problem_path + '/' + test_num_s
+  answer_filename = problem_path + '/' + test_num_s + '.a'
+
+  FileUtils.copy test_filename, problem[:input_filename]
+  
+  time_limit = problem[:time_limit] * 100
+  memory_limit = problem[:memory_limit] * 1024 * 1024
+  code, exit_value, time, max_mem = run('./'+ program_name, time_limit, memory_limit)
+  
+  print "#{test_num} "
+  
+  case CodeList[code]
+  when :ok
+    if problem[:fpct]
+      out = `#{problem_path}/check #{test_filename} #{problem[:output_filename]} #{answer_filename}`
+      # print out.split("\n").first[0, 100]
+    end
+  when :re
+    print "re #{exit_value}".red
+  when :tle
+    print "tle".blue
+  when :mle
+    print "mle".blue
+  end
+  
+  print " #{time}cs #{max_mem / 1024}kb".blue
+  
+  puts
+end

@@ -1,24 +1,19 @@
-import Data.ByteString.Char8 (getLine, readInt, words)
-import Data.Array (listArray, (!))
-import Data.List (group, sort)
-import Data.Maybe (fromJust)
-import Prelude hiding (getLine, words)
+{- ok -}
+import Control.Applicative ((<$>))
+import Data.List (sort)
 
-import Debug.Trace (trace)
-
-readInts = (map (fst . fromJust . readInt) . words) `fmap` getLine
+readInts = map read . words <$> getLine
 
 main = do
   getLine
-  as <- fmap sort readInts
+  as <- readInts
 
   let
-    solution = solve $ reverse $ as
+    solution = find . reverse . sort $ as
       where
-        solve (a:[]) = -1
-        solve (a:c:[]) = -1
-        solve (a:b:c:[]) = -1
-        solve (a:b:c:d:as) = trace (show [a, b, c, d]) $ 
-          if b + c + d > a && a /= d then a + b + c + d else solve (b:c:d:as)
+        find (a:as@(b:c:d:_))
+          | b + c + d > a && d /= a = a + b + c + d
+          | otherwise = find as
+        find _ = -1
 
   print solution

@@ -1,0 +1,9 @@
+* haskell
+rem is required
+rem faster than mod and faster than "if v > mod then v - mod else v"
+use bytestring => -50ms
+unsafeRead faster readArray
+unsafeRead is required
+-O2 required
+-O3 gives nothing
+-optc-O2 gives nothgin

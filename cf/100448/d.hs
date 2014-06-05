@@ -1,16 +1,9 @@
 {- tle 6 -}
 {-# LANGUAGE BangPatterns #-}
-{-# OPTIONS_GHC -O3 -optc-O3 -funbox-strict-fields #-}
+{-# OPTIONS_GHC -O2 -funbox-strict-fields #-}
 import Data.Array.Unboxed (listArray, (!), UArray)
 import Data.Bits (xor)
-import Data.ByteString.Char8 (getLine, readInt, words)
 import Data.Int (Int64)
-import Data.Maybe (fromJust)
-import Prelude hiding (getLine, words)
-
-import Debug.Trace (trace)
-
-readInts = (map (fst . fromJust . readInt) . words) `fmap` getLine
 
 (+.) :: Int64 -> Int64 -> Int64
 a +. b = (a + b) `mod` (10^9 + 7)
@@ -18,7 +11,7 @@ infixl 6 +.
 
 main = do
   getLine
-  as <- readInts
+  as <- (map read . words) `fmap` getLine
 
   let
     solution =

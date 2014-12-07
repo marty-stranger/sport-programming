@@ -1,3 +1,4 @@
+{- ok -}
 {-# LANGUAGE BangPatterns #-}
 
 {-import Data.Text (words)-}
@@ -15,8 +16,8 @@ solve periods m =
     all = foldl1 lcm' periods
     lefts = scanl1 lcm' periods
     rights = scanr1 lcm' periods
-    excepts = map (uncurry lcm') zip (1 : lefts) (tail rights ++ [1])
-    excepts = [lcm x y | x <- 1 : lefts | y <- tail rights ++ [1]]
+    excepts = map (uncurry lcm') $ zip (1 : lefts) (tail rights ++ [1])
+    -- excepts = [lcm x y | x <- 1 : lefts | y <- tail rights ++ [1]]
 
     solve' p 
         | p == all = Nothing
@@ -36,4 +37,4 @@ main = do
  
   let rs = solve ts m
 
-  putStr $ unlines $ map (fromMaybe "Never" . fmap showx) rs
+  putStr $ unlines $ map (fromMaybe "Never" . fmap show) rs

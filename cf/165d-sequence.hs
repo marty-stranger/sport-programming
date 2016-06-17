@@ -1,7 +1,3 @@
-
-
-
-
 import Control.Applicative
 import Control.Monad
 import Debug.Trace

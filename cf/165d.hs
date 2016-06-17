@@ -1,5 +1,7 @@
 {-# LANGUAGE BangPatterns, MagicHash #-}
+
 import Control.Applicative
+
 import Control.Monad
 import Control.Monad.ST
 import Debug.Trace
@@ -34,8 +36,8 @@ foldM' f z (x:xs) = do
   z' <- f z x
   z' `seq` foldM' f z' xs
 
-a `andI#` b = word2Int# (int2Word# a `and#` int2Word# b)
-a `orI#` b = word2Int# (int2Word# a `or#` int2Word# b)
+-- a `andI#` b = word2Int# (int2Word# a `and#` int2Word# b)
+-- a `orI#` b = word2Int# (int2Word# a `or#` int2Word# b)
 
 query f (-1) = return 0
 query f i = do

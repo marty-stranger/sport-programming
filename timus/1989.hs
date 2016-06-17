@@ -1,8 +1,11 @@
+{- tle 14 -}
+{-# OPTIONS_GHC -O3 -funbox-strict-fields #-}
 {-# LANGUAGE NPlusKPatterns, BangPatterns, MagicHash #-}
 
 import Control.Applicative
 import Control.Monad
 import Control.Monad.ST
+import Data.Array.Base (unsafeRead, unsafeWrite)
 import Data.Array.ST
 import Data.Array.Unboxed (UArray, (!), listArray)
 import Data.Bits
@@ -11,6 +14,7 @@ import qualified Data.ByteString.Char8 as BS
 import Data.Char
 import Data.Int
 import Data.Maybe
+import Data.STRef
 import Debug.Trace
 import GHC.Prim
 import GHC.Types
@@ -26,11 +30,11 @@ a `orI#` b = word2Int# (int2Word# a `or#` int2Word# b)
 update f (i + 1) d = do
 	n <- snd <$> getBounds f
 	let next (I# i) = I# (i `orI#` (i +# 1#))
-	let is = takeWhile (<= n) $ iterate next i
+	let !is = takeWhile (<= n) $ iterate next i
 	-- let is = takeWhile (<= n) $ iterate (\i -> i .|. (i + 1)) i
 	forM_ is $ \i -> do
-		v <- readArray f i
-		writeArray f i (v + d)
+		v <- unsafeRead f i
+		unsafeWrite f i (v + d)
 
 foldM' :: (Monad m) => (a -> b -> m a) -> a -> [b] -> m a
 foldM' _ z [] = return z
@@ -40,10 +44,20 @@ foldM' f z (x:xs) = do
 
 query f 0 = return 0
 query f (i + 1) = do
+	n <- snd <$> getBounds f
+
 	-- let is = takeWhile (>= 0) $ iterate (\i -> (i .&. (i+1)) - 1) i
 	-- sum <$> mapM (readArray f) is
 	let next (I# i) = I# ((i `andI#` (i +# 1#)) -# 1#)
-	foldM' (\s i -> (s+) <$> (readArray f i)) 0 $ takeWhile (>= 0) $ iterate next i
+	let !is = takeWhile (>= 0) $ iterate next i
+	-- foldM' (\s i -> (s+) <$> (unsafeRead f i)) 0 $ takeWhile (>= 0) $ iterate next i
+	
+	s <- newSTRef 0
+	forM_ is $ \i -> do
+		v <- unsafeRead f i
+  		modifySTRef' s (+ v)
+	
+	readSTRef s
 
 data Hashs s = Hashs Int (Fenwick s) (UArray Int Int64) Bool
 
@@ -72,7 +86,7 @@ hashsQuery :: Hashs s -> Int -> Int -> ST s Int64
 hashsQuery (Hashs n fenwick coefs rev) l r = do
 		v1 <- query fenwick r'
 		v2 <- query fenwick (l' - 1)
-		let v = v1 -. v2
+		let !v = v1 -. v2
 
 		return $ if l'+r' <= n+1 then v *. (coefs ! (n+1-r'-l')) else v
 	where
@@ -82,7 +96,7 @@ hashsUpdate :: Hashs s -> Int -> Char -> ST s ()
 hashsUpdate (Hashs n fenwick coefs rev) i c = do
 		v1 <- query fenwick i'
 		v2 <- query fenwick (i' - 1)
-		let p = v1 -. v2
+		let !p = v1 -. v2
 		update fenwick i' (vv - p)
 	where
 		i' = if rev then n+1-i else i
@@ -90,12 +104,11 @@ hashsUpdate (Hashs n fenwick coefs rev) i c = do
 
 readInt' = fst . fromJust . readInt
 
-solve :: BS.ByteString -> [Op] -> [Bool]
+solve :: BS.ByteString -> [Op] -> [String]
 solve s ops = runST $ do
 	lr <- makeHashs s False
 	rl <- makeHashs s True
 
-{-
 	vs <- forM ops $ \op -> case op of
 		(OpChange i c) -> do
 			hashsUpdate lr i c
@@ -105,19 +118,8 @@ solve s ops = runST $ do
 			v1 <- hashsQuery lr i j
 			v2 <- hashsQuery rl i j
 			return $ if v1 == v2 then "Yes" else "No"
--}
 
-	reverse <$> foldM (\rs op -> case op of
-		(OpChange i c) -> do
-			hashsUpdate lr i c
-			hashsUpdate rl i c
-			return rs
-		(OpQuery i j) -> do
-			v1 <- hashsQuery lr i j
-			v2 <- hashsQuery rl i j
-			let !r = v1 == v2
-			return $ r : rs
-		) [] ops
+	return $ filter (not . null) vs
 
 data Op = OpChange !Int !Char | OpQuery !Int !Int deriving (Show)
 
@@ -133,6 +135,6 @@ main = do
 	m <- readInt' <$> BS.getLine
 	ops <- map readOp <$> replicateM m BS.getLine
 
-	putStrLn . unlines . (map (\v -> if v then "Yes" else "No")) $ solve s ops
+	putStrLn . unlines $ solve s ops
 
 

@@ -6,6 +6,7 @@
 
   изолированный тест обеждает, что эта штука может работать оптимально
 -}
+
 {-# LANGUAGE BangPatterns #-}
 {-# OPTIONS_GHC -O2 -funbox-strict-fields #-}
 
